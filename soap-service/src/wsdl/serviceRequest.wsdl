@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.example.org/ServiceRequest/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://www.example.org/ServiceRequest/">
+
+  <types>
+    <xsd:schema targetNamespace="http://www.example.org/ServiceRequest/">
+      <xsd:element name="CreateServiceRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="descripcion" type="xsd:string"/>
+            <xsd:element name="estado" type="xsd:string"/>
+            <xsd:element name="fecha_creacion" type="xsd:dateTime"/>
+            <xsd:element name="fecha_actualizacion" type="xsd:dateTime"/>
+            <xsd:element name="usuario_id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateServiceRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetServiceRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetServiceRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="descripcion" type="xsd:string"/>
+            <xsd:element name="estado" type="xsd:string"/>
+            <xsd:element name="fecha_creacion" type="xsd:dateTime"/>
+            <xsd:element name="fecha_actualizacion" type="xsd:dateTime"/>
+            <xsd:element name="usuario_id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateServiceRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="descripcion" type="xsd:string"/>
+            <xsd:element name="estado" type="xsd:string"/>
+            <xsd:element name="fecha_creacion" type="xsd:dateTime"/>
+            <xsd:element name="fecha_actualizacion" type="xsd:dateTime"/>
+            <xsd:element name="usuario_id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateServiceRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteServiceRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteServiceRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetServiceRequests">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetServiceRequestsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="serviceRequests" type="tns:ServiceRequest" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ServiceRequest">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:long"/>
+          <xsd:element name="descripcion" type="xsd:string"/>
+          <xsd:element name="estado" type="xsd:string"/>
+          <xsd:element name="fecha_creacion" type="xsd:dateTime"/>
+          <xsd:element name="fecha_actualizacion" type="xsd:dateTime"/>
+          <xsd:element name="usuario_id" type="xsd:long"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+
+  <message name="CreateServiceRequestRequest">
+    <part name="parameters" element="tns:CreateServiceRequest"/>
+  </message>
+  <message name="CreateServiceRequestResponse">
+    <part name="parameters" element="tns:CreateServiceRequestResponse"/>
+  </message>
+  <message name="GetServiceRequestRequest">
+    <part name="parameters" element="tns:GetServiceRequest"/>
+  </message>
+  <message name="GetServiceRequestResponse">
+    <part name="parameters" element="tns:GetServiceRequestResponse"/>
+  </message>
+  <message name="UpdateServiceRequestRequest">
+    <part name="parameters" element="tns:UpdateServiceRequest"/>
+  </message>
+  <message name="UpdateServiceRequestResponse">
+    <part name="parameters" element="tns:UpdateServiceRequestResponse"/>
+  </message>
+  <message name="DeleteServiceRequestRequest">
+    <part name="parameters" element="tns:DeleteServiceRequest"/>
+  </message>
+  <message name="DeleteServiceRequestResponse">
+    <part name="parameters" element="tns:DeleteServiceRequestResponse"/>
+  </message>
+  <message name="GetServiceRequestsRequest">
+    <part name="parameters" element="tns:GetServiceRequests"/>
+  </message>
+  <message name="GetServiceRequestsResponse">
+    <part name="parameters" element="tns:GetServiceRequestsResponse"/>
+  </message>
+
+  <portType name="ServiceRequestPortType">
+    <operation name="CreateServiceRequest">
+      <input message="tns:CreateServiceRequestRequest"/>
+      <output message="tns:CreateServiceRequestResponse"/>
+    </operation>
+    <operation name="GetServiceRequest">
+      <input message="tns:GetServiceRequestRequest"/>
+      <output message="tns:GetServiceRequestResponse"/>
+    </operation>
+    <operation name="UpdateServiceRequest">
+      <input message="tns:UpdateServiceRequestRequest"/>
+      <output message="tns:UpdateServiceRequestResponse"/>
+    </operation>
+    <operation name="DeleteServiceRequest">
+      <input message="tns:DeleteServiceRequestRequest"/>
+      <output message="tns:DeleteServiceRequestResponse"/>
+    </operation>
+    <operation name="GetServiceRequests">
+      <input message="tns:GetServiceRequestsRequest"/>
+      <output message="tns:GetServiceRequestsResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="ServiceRequestBinding" type="tns:ServiceRequestPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CreateServiceRequest">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetServiceRequest">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateServiceRequest">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteServiceRequest">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetServiceRequests">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="ServiceRequestService">
+    <port name="ServiceRequestPort" binding="tns:ServiceRequestBinding">
+      <soap:address location="http://localhost:8000/wsdl"/>
+    </port>
+  </service>
+</definitions>
