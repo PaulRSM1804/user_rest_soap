@@ -1,0 +1,11 @@
+# Usa una imagen base de OpenJDK 17
+FROM openjdk:17-jdk-alpine
+
+# Copia el archivo JAR específico a la imagen del contenedor
+COPY target/rest-service-0.0.1-SNAPSHOT.jar app.jar
+
+# Expone el puerto que usa la aplicación
+EXPOSE 8080
+
+# Define el comando de inicio
+ENTRYPOINT ["java","-jar","/app.jar"]
