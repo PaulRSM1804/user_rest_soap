@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Lista de Solicitudes de Servicio</h2>
+  <button class="btn btn-primary" (click)="navigateToNewServiceRequest()">Nueva Solicitud de Servicio</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Fecha de Creación</th>
+        <th>Fecha de Actualización</th>
+        <th>ID de Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let serviceRequest of serviceRequests">
+        <td>{{ serviceRequest.id }}</td>
+        <td>{{ serviceRequest.descripcion }}</td>
+        <td>{{ serviceRequest.estado }}</td>
+        <td>{{ serviceRequest.fecha_creacion }}</td>
+        <td>{{ serviceRequest.fecha_actualizacion }}</td>
+        <td>{{ serviceRequest.usuario_id }}</td>
+        <td>
+          <button class="btn btn-info" (click)="editServiceRequest(serviceRequest.id)">Editar</button>
+          <button class="btn btn-danger" (click)="deleteServiceRequest(serviceRequest.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
